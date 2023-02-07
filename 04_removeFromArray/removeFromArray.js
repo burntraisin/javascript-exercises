@@ -1,10 +1,29 @@
-const removeFromArray = function(array, argument) {
+const removeFromArray = function(array, ...args) {
     let finalOutput = [];
-    for (const userOutput of array) {   //run through array
-        if (userOutput != argument) {   //if the argument does not match
-            finalOutput.push(userOutput);  //return to add to array
+    const givenArray = array;
+    let argsList = [];
+    argsList.push(args);
+
+    function excludeItems() {
+        for (const item of givenArray) {
+            if (item !== argsList) {
+                return false;
+            }
+            else {
+                return true;
+            }
         }
     }
+
+    const result = givenArray.filter(excludeItems);
+    finalOutput.push(result);
+
+    /* for (const userOutput of givenArray) {  
+        if (userOutput !== excludeItems) {   
+            finalOutput.push(userOutput);
+        }
+    } */
+
     return finalOutput;
 };
 
